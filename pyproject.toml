@@ -1,14 +1,13 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs", "hatch-fancy-pypi-readme"]
-build-backend = "hatchling.build"
-
-[tool.hatch.version]
-source = "vcs"
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "jsonschema"
 description = "An implementation of JSON Schema validation for Python"
 requires-python = ">=3.7"
+version = "4.17.3"
+readme = "README.rst"
 license = {text = "MIT"}
 keywords = ["validation", "data validation", "jsonschema", "json"]
 authors = [
@@ -29,7 +28,6 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dynamic = ["version", "readme"]
 
 dependencies = [
   "attrs>=17.4.0",
@@ -75,6 +73,16 @@ Funding = "https://github.com/sponsors/Julian"
 Tidelift = "https://tidelift.com/subscription/pkg/pypi-jsonschema?utm_source=pypi-jsonschema&utm_medium=referral&utm_campaign=pypi-link"
 Changelog = "https://github.com/python-jsonschema/jsonschema/blob/main/CHANGELOG.rst"
 Source = "https://github.com/python-jsonschema/jsonschema"
+
+[tool.setuptools]
+packages = ["jsonschema"]
+
+[tool.setuptools.package-data]
+jsonschema = [
+  "schemas/*",
+  "schemas/vocabularies/draft2019-09/*",
+  "schemas/vocabularies/draft2020-12/*",
+]
 
 [tool.hatch.metadata.hooks.fancy-pypi-readme]
 content-type = "text/x-rst"
